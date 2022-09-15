@@ -16,27 +16,17 @@ class AlphabetViewActivity : AppCompatActivity() {
         val firstBtn = findViewById<Button>(R.id.button_first)
         val lastBtn = findViewById<Button>(R.id.button_last)
 
-        /*val helpClickListener = HelpClickListener()
+        val helpClickListener = HelpClickListener()
 
         overviewBtn.setOnClickListener(helpClickListener)
         firstBtn.setOnClickListener(helpClickListener)
-        lastBtn.setOnClickListener(helpClickListener)*/
+        lastBtn.setOnClickListener(helpClickListener)
 
-        /*overviewBtn.setOnClickListener {
-            Toast.makeText(this, "You clicked button 4", Toast.LENGTH_LONG).show()
-            val intent = Intent(this, MainActivity::class.java)
-            startActivity(intent)
-        }
-        firstBtn.setOnClickListener {
-            Toast.makeText(this, "First letter button has no functionality", Toast.LENGTH_LONG).show()
-        }
-        lastBtn.setOnClickListener {
-            Toast.makeText(this, "Last letter button has no functionality", Toast.LENGTH_LONG).show()
-        }*/
+
     }
 
     fun nextActivity(){
-        val intentAlphabet = Intent(this, AlphabetViewActivity::class.java)
+        val intentAlphabet = Intent(this, MainActivity::class.java)
         startActivity(intentAlphabet)
 
     }
@@ -47,13 +37,17 @@ class AlphabetViewActivity : AppCompatActivity() {
             val view = p0?.rootView
             when (p0?.id) {
 
-                R.id.button4, R.id.button5, R.id.button6, R.id.button7 -> {
+                R.id.button_overview -> {
 
                     nextActivity()
                 }
-                R.id.button8 -> {
+                R.id.button_first -> {
                     nextActivity()
                 }
+                R.id.button_last -> {
+                    nextActivity()
+                }
+
             }
         }
     }
