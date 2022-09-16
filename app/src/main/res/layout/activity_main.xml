@@ -1,69 +1,255 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Alphabet Book!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Click on any letter"
+        android:layout_gravity="center_horizontal"
+        android:fontFamily= "casual"
+        android:textSize="20dp"
+        android:padding="10dp"/>
 
-    <Button
-        android:id="@+id/button4"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp">
 
-    <Button
-        android:id="@+id/button5"
+        <Button
+            android:id="@+id/btn_a"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="A"
+            android:layout_margin="7dp"/>
+
+        <Button
+            android:id="@+id/btn_b"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="B"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_c"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="C"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_d"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="D"
+            android:layout_margin="7dp"/>
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button4" />
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp">
 
-    <Button
-        android:id="@+id/button6"
+        <Button
+            android:id="@+id/btn_e"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="E"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_f"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="F"
+            android:layout_margin="7dp"/>
+
+        <Button
+            android:id="@+id/btn_g"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="G"
+            android:layout_margin="7dp"/>
+
+        <Button
+            android:id="@+id/btn_h"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="H"
+            android:layout_margin="7dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/textView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/button5" />
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp">
 
-    <Button
-        android:id="@+id/button7"
+        <Button
+            android:id="@+id/btn_i"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="I"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_j"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="J"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_k"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="K"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_l"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="L"
+            android:layout_margin="7dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/button8"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp">
 
-    <Button
-        android:id="@+id/button8"
+        <Button
+            android:id="@+id/btn_m"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="M"
+            android:layout_margin="7dp"/>
+
+        <Button
+            android:id="@+id/btn_n"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="N"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_o"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="O"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_p"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="P"
+            android:layout_margin="7dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Button"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <Button
+            android:id="@+id/btn_q"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="Q"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_r"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="R"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_s"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="S"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_t"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="T"
+            android:layout_margin="7dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/btn_u"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="U"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_v"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="V"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_w"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="W"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_x"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="X"
+            android:layout_margin="7dp"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="center_horizontal"
+        android:padding="5dp">
+
+        <Button
+            android:id="@+id/btn_y"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="Y"
+            android:layout_margin="7dp"/>
+        <Button
+            android:id="@+id/btn_z"
+            android:layout_width="65dp"
+            android:layout_height="65dp"
+            android:text="Z"
+            android:layout_margin="7dp"/>
+
+
+    </LinearLayout>
+
+
+
+</LinearLayout>
