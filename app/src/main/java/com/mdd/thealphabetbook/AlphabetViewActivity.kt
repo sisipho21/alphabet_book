@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
@@ -21,15 +20,19 @@ class AlphabetViewActivity : AppCompatActivity() {
         val overviewBtn = findViewById<Button>(R.id.button_overview)
         val firstBtn = findViewById<Button>(R.id.button_first)
         val lastBtn = findViewById<Button>(R.id.button_last)
+        val previousBtn = findViewById<Button>(R.id.imageButton_previous)
+        val nextBtn = findViewById<Button>(R.id.imageButton_next)
         val imgView = findViewById<ImageView>(R.id.imageView)
 
-        val helpClickListener = AlphabetHelpClickListener(imgView)
+        val helpClickListener = AlphabetHelpClickListener(imgView, value)
 
         overviewBtn.setOnClickListener(helpClickListener)
         firstBtn.setOnClickListener(helpClickListener)
         lastBtn.setOnClickListener(helpClickListener)
+        previousBtn.setOnClickListener(helpClickListener)
+        nextBtn.setOnClickListener(helpClickListener)
 
-        arrPictures = arrayOf<Int>(R.drawable.slide01, R.drawable.slide02, R.drawable.slide03, R.drawable.slide04, R.drawable.slide05, R.drawable.slide06, R.drawable.slide07, R.drawable.slide08, R.drawable.slide09,
+        arrPictures = arrayOf(R.drawable.slide01, R.drawable.slide02, R.drawable.slide03, R.drawable.slide04, R.drawable.slide05, R.drawable.slide06, R.drawable.slide07, R.drawable.slide08, R.drawable.slide09,
             R.drawable.slide10, R.drawable.slide11, R.drawable.slide12, R.drawable.slide13, R.drawable.slide14, R.drawable.slide15, R.drawable.slide16, R.drawable.slide17,
             R.drawable.slide18, R.drawable.slide19, R.drawable.slide20, R.drawable.slide21, R.drawable.slide22, R.drawable.slide23, R.drawable.slide24, R.drawable.slide25, R.drawable.slide26)
 
@@ -46,20 +49,40 @@ class AlphabetViewActivity : AppCompatActivity() {
         startActivity(intentAlphabet)
     }
 
-    inner class AlphabetHelpClickListener (val imageView: ImageView): View.OnClickListener{
+    inner class AlphabetHelpClickListener (val imageView: ImageView, var counter: Int): View.OnClickListener{
+
+
         override fun onClick(p0: View?) {
 
-            val view = p0?.rootView
             when (p0?.id) {
 
                 R.id.button_overview -> {
                     nextActivity()
                 }
                 R.id.button_first -> {
-                    changeImage(imageView, 0)
+                    counter = 0
+                    changeImage(imageView, counter)
                 }
                 R.id.button_last -> {
-                    changeImage(imageView, 25)
+                    counter = 25
+                    changeImage(imageView, counter)
+                }
+                R.id.imageButton_previous -> {
+                    if (counter == 0){
+                        Toast.makeText(this@AlphabetViewActivity, "A is the first letter", Toast.LENGTH_LONG).show()
+                    }
+                    counter--
+                    changeImage(imageView, counter)
+
+                }
+                R.id.imageButton_next -> {
+                    if (counter < 25) {
+                        counter++
+                        changeImage(imageView, counter)
+                    }
+                    else {
+                        Toast.makeText(this@AlphabetViewActivity, "Z is the last letter", Toast.LENGTH_LONG).show()
+                    }
                 }
 
             }

@@ -11,7 +11,6 @@ open class MainActivity : AppCompatActivity(){
     val helperListener = MainHelpClickListener()
     var arrBtn = arrayOf<Button>()
     var btnValue = 0
-    var str ="value"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -43,8 +42,8 @@ open class MainActivity : AppCompatActivity(){
         val buttonY = findViewById<Button>(R.id.btn_y)
         val buttonZ = findViewById<Button>(R.id.btn_z)
 
-        arrBtn = arrayOf<Button>(buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ, buttonK, buttonL,
-            buttonM, buttonN, buttonO, buttonP, buttonQ, buttonR, buttonS, buttonT, buttonU, buttonV, buttonW, buttonX, buttonY, buttonZ)
+        arrayOf<Button>(buttonA, buttonB, buttonC, buttonD, buttonE, buttonF, buttonG, buttonH, buttonI, buttonJ, buttonK, buttonL,
+            buttonM, buttonN, buttonO, buttonP, buttonQ, buttonR, buttonS, buttonT, buttonU, buttonV, buttonW, buttonX, buttonY, buttonZ).also { arrBtn = it }
 
         activateListener(arrBtn)
     }
@@ -68,7 +67,6 @@ open class MainActivity : AppCompatActivity(){
 
         override fun onClick(p0: View?) {
 
-            val view = p0?.rootView
             when (p0?.id) {
 
                 R.id.btn_a ->{

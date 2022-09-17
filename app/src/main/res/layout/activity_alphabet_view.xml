@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    style="?android:attr/buttonBarButtonStyle"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".AlphabetViewActivity">
@@ -13,23 +14,10 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="120dp"
         android:layout_marginBottom="50dp"
+        android:contentDescription="@string/imageview_description"
         app:srcCompat="@drawable/slide01" />
 
-    <Button
-        android:id="@+id/button_previous"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toLeftOf="@id/imageView"
-        android:text="P" />
 
-    <Button
-        android:id="@+id/button_next"
-        android:layout_width="48dp"
-        android:layout_height="wrap_content"
-        android:layout_toRightOf="@id/imageView"
-        android:layout_centerVertical="true"
-        android:text="N" />
 
     <Button
         android:id="@+id/button_overview"
@@ -38,7 +26,8 @@
         android:layout_below="@id/imageView"
         android:layout_centerHorizontal="true"
         android:layout_margin="10dp"
-        android:text="Overview" />
+        style="?android:attr/buttonBarButtonStyle"
+        android:text="@string/overview_button_label" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -51,17 +40,32 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="First letter" />
+            android:text="@string/first_button_label" />
 
         <Button
             android:id="@+id/button_last"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
-            android:text="Last letter" />
+            android:text="@string/last_button_label" />
 
     </LinearLayout>
 
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/imageButton_next"
+        android:layout_width="76dp"
+        android:layout_height="83dp"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@id/imageView"
+        android:background="@drawable/next" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/imageButton_previous"
+        android:layout_width="76dp"
+        android:layout_height="83dp"
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@id/imageView"
+        android:background="@drawable/previous" />
 
 
 </RelativeLayout>
