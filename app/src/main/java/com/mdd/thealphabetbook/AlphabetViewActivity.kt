@@ -12,12 +12,12 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlin.properties.Delegates
 
 class AlphabetViewActivity : AppCompatActivity() {
-    private var arrPictures = arrayOf<Int>()
-    private lateinit var sharedP : SharedPreferences
-    private lateinit var sharedEdt : SharedPreferences.Editor
-    private lateinit var helpClickListener : AlphabetHelpClickListener
-    private var value =0
-    private var flag by Delegates.notNull<Boolean>()
+    private var arrPictures = arrayOf<Int>() //array to store pictures
+    private lateinit var sharedP : SharedPreferences //used to retain activity state
+    private lateinit var sharedEdt : SharedPreferences.Editor //used to retain activity state
+    private lateinit var helpClickListener : AlphabetHelpClickListener //object of the inner class
+    private var value = 0 //gets the intent passed int vales
+    private var flag by Delegates.notNull<Boolean>() //gets the intent passed boolean vales
 
     /** Overrides the onCreate() method to instantiate objects of buttons, the imageView and the inner class
      * It stores the pictures to be displayed by the imageView in an array and calls the changeImage() method to display a different image
@@ -33,6 +33,9 @@ class AlphabetViewActivity : AppCompatActivity() {
 
         sharedP = getSharedPreferences("data", Context.MODE_PRIVATE)
         sharedEdt = sharedP.edit()
+
+        supportActionBar!!.setDisplayHomeAsUpEnabled(true)
+        supportActionBar!!.title="Letters"
 
         val overviewBtn = findViewById<Button>(R.id.button_overview)
         val firstBtn = findViewById<Button>(R.id.button_first)
@@ -114,6 +117,8 @@ class AlphabetViewActivity : AppCompatActivity() {
         sharedEdt.clear()
         sharedEdt.commit()
     }
+
+
 
     inner class AlphabetHelpClickListener (val imageView: ImageView, var counter: Int): View.OnClickListener{
 
