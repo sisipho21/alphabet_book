@@ -11,6 +11,10 @@ import androidx.appcompat.app.AppCompatActivity
 class AlphabetViewActivity : AppCompatActivity() {
     var arrPictures = arrayOf<Int>()
 
+    /** Overrides the onCreate() method to instantiate objects of buttons, the imageView and the inner class
+     * It stores the pictures to be displayed by the imageView in an array and calls the changeImage() method to display a different image
+     * @see changeImage
+     * @see AlphabetHelpClickListener*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alphabet_view)
@@ -40,10 +44,14 @@ class AlphabetViewActivity : AppCompatActivity() {
 
     }
 
+    /** Changes the image displayed in the view into a different image, depending on the button clicked
+     * @param view is the imageView object that the picture will be viewed on
+     * @param num is the array index of the picture to be displayed on the imageView given*/
     fun changeImage(view: ImageView, num: Int){
         view.setImageResource(arrPictures[num])
     }
 
+    /** Uses an intent to move from this activity to MainActivity */
     fun nextActivity(){
         val intentAlphabet = Intent(this, MainActivity::class.java)
         startActivity(intentAlphabet)
@@ -51,7 +59,10 @@ class AlphabetViewActivity : AppCompatActivity() {
 
     inner class AlphabetHelpClickListener (val imageView: ImageView, var counter: Int): View.OnClickListener{
 
-
+        /** Overrides the OnClick() method by calling the appropriate method of the super class, depending on the button clicked.
+         * Also changes the counter to correspond to the array index of the image displayed
+         * @see nextActivity
+         * @see changeImage*/
         override fun onClick(p0: View?) {
 
             when (p0?.id) {
@@ -68,7 +79,7 @@ class AlphabetViewActivity : AppCompatActivity() {
                     changeImage(imageView, counter)
                 }
                 R.id.imageButton_previous -> {
-                    if (counter == 0){
+                    if (counter == 0){ //Let the user know they are on the first letter
                         Toast.makeText(this@AlphabetViewActivity, "A is the first letter", Toast.LENGTH_LONG).show()
                     }
                     counter--
@@ -77,10 +88,10 @@ class AlphabetViewActivity : AppCompatActivity() {
                 }
                 R.id.imageButton_next -> {
                     if (counter < 25) {
-                        counter++
+                        counter++ 
                         changeImage(imageView, counter)
                     }
-                    else {
+                    else { //Let the user know they are on the last letter
                         Toast.makeText(this@AlphabetViewActivity, "Z is the last letter", Toast.LENGTH_LONG).show()
                     }
                 }

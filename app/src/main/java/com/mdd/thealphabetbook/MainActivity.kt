@@ -12,6 +12,9 @@ open class MainActivity : AppCompatActivity(){
     var arrBtn = arrayOf<Button>()
     var btnValue = 0
 
+    /** Overrides the onCreate() method  so that it instantiates objects of all buttons.
+     * It stores the buttons in an array and runs the activateListener() method
+     * @see activateListener*/
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -48,12 +51,16 @@ open class MainActivity : AppCompatActivity(){
         activateListener(arrBtn)
     }
 
+    /** Sets the OnClickLister for all buttons in an array
+     * @param array is an array containing buttons*/
     fun activateListener(array: Array<Button>){
         for (x in array){
             x.setOnClickListener(helperListener)
         }
     }
 
+    /** Uses an intent to move from this activity to AlphabetViewActivity
+     * @see btnValue a global variable used to identify which button is clicked*/
     fun nextActivity(){
         val intentAlphabet = Intent( this, AlphabetViewActivity::class.java)
         intentAlphabet.putExtra("intName",btnValue)
@@ -61,10 +68,11 @@ open class MainActivity : AppCompatActivity(){
     }
 
 
-
     inner class MainHelpClickListener : View.OnClickListener, AppCompatActivity(){
-        /** This inner class works as a controller between the view(Main Activity) and the model (AlphabetView Activity)*/
 
+        /** Overrides the OnClick method by calling the nextActivity() method of the super class.
+         * Also sets the value of the button values in a global variable used by nextActivity
+         * @see nextActivity*/
         override fun onClick(p0: View?) {
 
             when (p0?.id) {
