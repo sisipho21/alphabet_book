@@ -16,6 +16,7 @@ class AlphabetViewActivity : AppCompatActivity() {
     private lateinit var sharedP : SharedPreferences
     private lateinit var sharedEdt : SharedPreferences.Editor
     private lateinit var helpClickListener : AlphabetHelpClickListener
+    private var value =0
     private var flag by Delegates.notNull<Boolean>()
 
     /** Overrides the onCreate() method to instantiate objects of buttons, the imageView and the inner class
@@ -26,7 +27,7 @@ class AlphabetViewActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_alphabet_view)
         val intent = intent
-        val value = intent.getIntExtra("intName", 0)
+        value = intent.getIntExtra("intName", 0)
 
         flag = intent.getBooleanExtra("main", true)
 
@@ -103,7 +104,13 @@ class AlphabetViewActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         val imgView = findViewById<ImageView>(R.id.imageView)
-        changeImage(imgView, sharedP.getInt("the_view", helpClickListener.counter))
+
+        val count = if (flag){
+            value
+        } else {
+            helpClickListener.counter
+        }
+        changeImage(imgView, count)//sharedP.getInt("the_view", count))
         sharedEdt.clear()
         sharedEdt.commit()
     }
