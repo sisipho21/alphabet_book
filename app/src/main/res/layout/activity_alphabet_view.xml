@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".AlphabetViewActivity">
 
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="25dp"
+        android:fontFamily= "casual"
+        android:text="@string/alphabet_view_textview_label"
+        android:textSize="20sp"
+        android:padding="10dp"/>
+
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="250dp"

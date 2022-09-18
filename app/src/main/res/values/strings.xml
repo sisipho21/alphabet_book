@@ -3,8 +3,11 @@
     <string name="overview_button_label">Overview</string>
     <string name="first_button_label">First letter</string>
     <string name="last_button_label">Last letter</string>
-    <string name="textview_label">Click on any letter</string>
+    <string name="main_textview_label">Click on any letter</string>
+    <string name="alphabet_view_textview_label">Can you say the letter out loud?</string>
     <string name="imageview_description">View an image</string>
+    <string name="previous_action_button">Previous</string>
+    <string name="next_action_button">Next</string>
     <string name="a">A</string>
     <string name="b">B</string>
     <string name="c">C</string>
