@@ -1,15 +1,22 @@
 package com.mdd.thealphabetbook
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import kotlin.properties.Delegates
 
 class AlphabetViewActivity : AppCompatActivity() {
-    var arrPictures = arrayOf<Int>()
+    private var arrPictures = arrayOf<Int>()
+    private lateinit var sharedP : SharedPreferences
+    private lateinit var sharedEdt : SharedPreferences.Editor
+    private lateinit var helpClickListener : AlphabetHelpClickListener
+    private var flag by Delegates.notNull<Boolean>()
 
     /** Overrides the onCreate() method to instantiate objects of buttons, the imageView and the inner class
      * It stores the pictures to be displayed by the imageView in an array and calls the changeImage() method to display a different image
@@ -21,6 +28,11 @@ class AlphabetViewActivity : AppCompatActivity() {
         val intent = intent
         val value = intent.getIntExtra("intName", 0)
 
+        flag = intent.getBooleanExtra("main", true)
+
+        sharedP = getSharedPreferences("data", Context.MODE_PRIVATE)
+        sharedEdt = sharedP.edit()
+
         val overviewBtn = findViewById<Button>(R.id.button_overview)
         val firstBtn = findViewById<Button>(R.id.button_first)
         val lastBtn = findViewById<Button>(R.id.button_last)
@@ -28,7 +40,7 @@ class AlphabetViewActivity : AppCompatActivity() {
         val nextBtn = findViewById<Button>(R.id.imageButton_next)
         val imgView = findViewById<ImageView>(R.id.imageView)
 
-        val helpClickListener = AlphabetHelpClickListener(imgView, value)
+        helpClickListener = AlphabetHelpClickListener(imgView, value)
 
         overviewBtn.setOnClickListener(helpClickListener)
         firstBtn.setOnClickListener(helpClickListener)
@@ -55,6 +67,45 @@ class AlphabetViewActivity : AppCompatActivity() {
     fun nextActivity(){
         val intentAlphabet = Intent(this, MainActivity::class.java)
         startActivity(intentAlphabet)
+    }
+
+    /** Overrides the OnPause() method to save the current image that the imageView is displaying when the app is paused
+     * @see sharedEdt*/
+    override fun onPause() {
+        super.onPause()
+        val currentCounter = helpClickListener.counter
+        sharedEdt.putInt("the_view", currentCounter)
+        sharedEdt.commit()
+    }
+
+    /** Overrides the onStop() method to save the current image that the imageView is displaying when the app is stopped
+     * @see sharedEdt*/
+    override fun onStop() {
+        super.onStop()
+        val currentCounter = helpClickListener.counter
+        sharedEdt.putInt("the_view", currentCounter)
+        sharedEdt.commit()
+    }
+
+    /** Overrides the onDestroy() method to save the current image that the imageView is displaying when the app is destroyed
+     * @see sharedEdt*/
+    override fun onDestroy() {
+        super.onDestroy()
+        val currentCounter = helpClickListener.counter
+        sharedEdt.putInt("the_view", currentCounter)
+        sharedEdt.commit()
+    }
+
+    /** Overrides the onStart() method to obtain and start app on the last image or activity it was on when the app was paused, stopped, or destroyed
+     * @see changeImage
+     * @see sharedP
+     * @see sharedEdt*/
+    override fun onStart() {
+        super.onStart()
+        val imgView = findViewById<ImageView>(R.id.imageView)
+        changeImage(imgView, sharedP.getInt("the_view", helpClickListener.counter))
+        sharedEdt.clear()
+        sharedEdt.commit()
     }
 
     inner class AlphabetHelpClickListener (val imageView: ImageView, var counter: Int): View.OnClickListener{
@@ -88,7 +139,7 @@ class AlphabetViewActivity : AppCompatActivity() {
                 }
                 R.id.imageButton_next -> {
                     if (counter < 25) {
-                        counter++ 
+                        counter++
                         changeImage(imageView, counter)
                     }
                     else { //Let the user know they are on the last letter

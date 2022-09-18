@@ -64,6 +64,7 @@ open class MainActivity : AppCompatActivity(){
     fun nextActivity(){
         val intentAlphabet = Intent( this, AlphabetViewActivity::class.java)
         intentAlphabet.putExtra("intName",btnValue)
+        intentAlphabet.putExtra("main",  true)
         startActivity(intentAlphabet)
     }
 
